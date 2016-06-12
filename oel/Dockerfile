@@ -22,3 +22,18 @@ RUN useradd -md /u01 -G wheel,dba,svrtech -s /bin/bash usr0
 RUN echo "Hello docker!"
 
 RUN yum clean all
+
+USER    usr0
+
+# Rethinkdb process
+EXPOSE 28015
+# Rethinkdb admin console
+EXPOSE 8080
+
+# Create the /rethinkdb_data dir structure
+RUN ls -ltr
+
+#ENTRYPOINT ["/usr/bin/rethinkdb"]
+
+WORKDIR /u01
+
